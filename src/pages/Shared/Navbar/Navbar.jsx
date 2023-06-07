@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../../../assets/logo.png';
+import logo from "../../../assets/logo.png";
 
 const Navbar = () => {
-    const navItems = <>
-    <li>
+  const navItems = (
+    <>
+      <li>
         <Link>Home</Link>
-    </li>
-    <li>
+      </li>
+      <li>
         <Link>Instructors</Link>
-    </li>
-    <li>
+      </li>
+      <li>
         <Link>Classes</Link>
-    </li>
-    <li>
+      </li>
+      <li>
         <Link>Dashboard</Link>
-    </li>
+      </li>
     </>
+  );
 
   return (
     <div className="navbar bg-black opacity-80">
@@ -46,16 +48,18 @@ const Navbar = () => {
           </ul>
         </div>
         <img className="w-20" src={logo} alt="" />
-        <Link className="btn btn-ghost normal-case text-2xl lg:text-5xl font-semibold text-white">Athleti Camp</Link>
+        <Link className="btn btn-ghost normal-case text-2xl lg:text-5xl font-semibold text-white">
+          Athleti Camp
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-white">
-          {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1 text-white">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link>
-        <button className="btn btn-info btn-outline btn-sm md:btn-md">Login</button>
+        <Link to="/login">
+          <button className="btn btn-info btn-outline btn-sm md:btn-md">
+            Login
+          </button>
         </Link>
       </div>
     </div>
