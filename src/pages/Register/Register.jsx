@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const {
@@ -10,8 +11,17 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const { createUser } = useAuth();
+
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser)
+    })
+    .catch( err => {
+      console.error(err.message);
+    })
   };
 
   const validatePassword = value => {
