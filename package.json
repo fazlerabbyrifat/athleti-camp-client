@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
+    "axios": "^1.4.0",
     "firebase": "^9.22.2",
     "framer-motion": "^10.12.16",
     "localforage": "^1.10.0",

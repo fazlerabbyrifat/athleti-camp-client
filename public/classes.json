@@ -1,83 +1,82 @@
 [
-    {
-      "image": "https://example.com/image1.jpg",
-      "name": "Basketball Training",
-      "instructor": "John Smith",
-      "totalStudents": 20,
-      "availableSeats": 5,
-      "price": 50
-    },
-    {
-      "image": "https://example.com/image2.jpg",
-      "name": "Soccer Skills Development",
-      "instructor": "Sarah Johnson",
-      "totalStudents": 15,
-      "availableSeats": 10,
-      "price": 60
-    },
-    {
-      "image": "https://example.com/image3.jpg",
-      "name": "Tennis Lessons",
-      "instructor": "Michael Davis",
-      "totalStudents": 12,
-      "availableSeats": 3,
-      "price": 40
-    },
-    {
-      "image": "https://example.com/image4.jpg",
-      "name": "Swimming Classes",
-      "instructor": "Emily Wilson",
-      "totalStudents": 25,
-      "availableSeats": 5,
-      "price": 70
-    },
-    {
-      "image": "https://example.com/image5.jpg",
-      "name": "Gymnastics for Beginners",
-      "instructor": "David Thompson",
-      "totalStudents": 18,
-      "availableSeats": 2,
-      "price": 55
-    },
-    {
-      "image": "https://example.com/image6.jpg",
-      "name": "Martial Arts Training",
-      "instructor": "Jennifer Lee",
-      "totalStudents": 30,
-      "availableSeats": 8,
-      "price": 65
-    },
-    {
-      "image": "https://example.com/image7.jpg",
-      "name": "Running Club",
-      "instructor": "Robert Anderson",
-      "totalStudents": 20,
-      "availableSeats": 0,
-      "price": 45
-    },
-    {
-      "image": "https://example.com/image8.jpg",
-      "name": "Yoga and Meditation",
-      "instructor": "Sophia Turner",
-      "totalStudents": 15,
-      "availableSeats": 5,
-      "price": 40
-    },
-    {
-      "image": "https://example.com/image9.jpg",
-      "name": "Badminton Training",
-      "instructor": "Daniel Clark",
-      "totalStudents": 10,
-      "availableSeats": 3,
-      "price": 50
-    },
-    {
-      "image": "https://example.com/image10.jpg",
-      "name": "Cycling Group",
-      "instructor": "Olivia Baker",
-      "totalStudents": 12,
-      "availableSeats": 4,
-      "price": 30
-    }
-  ]
-  
+  {
+    "image": "https://i.ibb.co/BrQg1vB/basketball-1978357-1280.jpg",
+    "name": "Basketball Training",
+    "instructor": "John Smith",
+    "totalStudents": 20,
+    "availableSeats": 5,
+    "price": 50
+  },
+  {
+    "image": "https://i.ibb.co/6ySvYjt/man-training-kids-playing-football-full-shot.jpg",
+    "name": "Football Skills Development",
+    "instructor": "Sarah Johnson",
+    "totalStudents": 15,
+    "availableSeats": 10,
+    "price": 60
+  },
+  {
+    "image": "https://i.ibb.co/YNJQhhj/man-swinging-tennis-racket-with-both-hands-make-strong-shot-practice-night-before-match.jpg",
+    "name": "Tennis Lessons",
+    "instructor": "Michael Davis",
+    "totalStudents": 12,
+    "availableSeats": 3,
+    "price": 40
+  },
+  {
+    "image": "https://i.ibb.co/9VSyddx/coach-teaching-kid-indoor-swimming-pool-how-swim-dive-swimming-lesson-kids-development.jpg",
+    "name": "Swimming Classes",
+    "instructor": "Emily Wilson",
+    "totalStudents": 25,
+    "availableSeats": 5,
+    "price": 70
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/child-gymnastics-balance-beam-girl-gymnast-athlete-during-exercise-horizontal-bar-gymnastics-competitions-coach-with-child_1157-44181.jpg?w=996&t=st=1686505633~exp=1686506233~hmac=e7ad2682be28c02c8500199fc760b5578e5f42658c19340350262af7f15b507e",
+    "name": "Gymnastics for Beginners",
+    "instructor": "David Thompson",
+    "totalStudents": 18,
+    "availableSeats": 2,
+    "price": 55
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/karate-girl-boy-with-black-belts_155003-9954.jpg?w=996&t=st=1686505741~exp=1686506341~hmac=9d127fea6e611f3e9d2a343eb02f417e7e3f44496b8bc8130e06b46a3917816a",
+    "name": "Martial Arts Training",
+    "instructor": "Jennifer Lee",
+    "totalStudents": 30,
+    "availableSeats": 8,
+    "price": 65
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/side-view-woman-man-running-track_23-2149731291.jpg?w=996&t=st=1686505790~exp=1686506390~hmac=aff3df95a9d7fda566ad1943ef0dced20554d87845da55a511afb1fe98dc2b5d",
+    "name": "Running Club",
+    "instructor": "Robert Anderson",
+    "totalStudents": 20,
+    "availableSeats": 0,
+    "price": 45
+  },
+  {
+    "image": "https://st3.depositphotos.com/2937983/14415/i/600/depositphotos_144151499-stock-photo-cricket-batsmen-practice-nets.jpg",
+    "name": "Cricket Club",
+    "instructor": "John Turner",
+    "totalStudents": 15,
+    "availableSeats": 5,
+    "price": 40
+  },
+  {
+    "image": "https://images.pexels.com/photos/2202685/pexels-photo-2202685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "name": "Badminton Training",
+    "instructor": "Daniel Clark",
+    "totalStudents": 10,
+    "availableSeats": 3,
+    "price": 50
+  },
+  {
+    "image": "https://img.freepik.com/free-photo/young-female-bike-rider-bicycle-isolated-gradient-wall_155003-37565.jpg?w=2000",
+    "name": "Cycling Group",
+    "instructor": "Olivia Baker",
+    "totalStudents": 12,
+    "availableSeats": 4,
+    "price": 30
+  }
+]
