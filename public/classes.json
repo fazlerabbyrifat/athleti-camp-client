@@ -1,0 +1,83 @@
+[
+    {
+      "image": "https://example.com/image1.jpg",
+      "name": "Basketball Training",
+      "instructor": "John Smith",
+      "totalStudents": 20,
+      "availableSeats": 5,
+      "price": 50
+    },
+    {
+      "image": "https://example.com/image2.jpg",
+      "name": "Soccer Skills Development",
+      "instructor": "Sarah Johnson",
+      "totalStudents": 15,
+      "availableSeats": 10,
+      "price": 60
+    },
+    {
+      "image": "https://example.com/image3.jpg",
+      "name": "Tennis Lessons",
+      "instructor": "Michael Davis",
+      "totalStudents": 12,
+      "availableSeats": 3,
+      "price": 40
+    },
+    {
+      "image": "https://example.com/image4.jpg",
+      "name": "Swimming Classes",
+      "instructor": "Emily Wilson",
+      "totalStudents": 25,
+      "availableSeats": 5,
+      "price": 70
+    },
+    {
+      "image": "https://example.com/image5.jpg",
+      "name": "Gymnastics for Beginners",
+      "instructor": "David Thompson",
+      "totalStudents": 18,
+      "availableSeats": 2,
+      "price": 55
+    },
+    {
+      "image": "https://example.com/image6.jpg",
+      "name": "Martial Arts Training",
+      "instructor": "Jennifer Lee",
+      "totalStudents": 30,
+      "availableSeats": 8,
+      "price": 65
+    },
+    {
+      "image": "https://example.com/image7.jpg",
+      "name": "Running Club",
+      "instructor": "Robert Anderson",
+      "totalStudents": 20,
+      "availableSeats": 0,
+      "price": 45
+    },
+    {
+      "image": "https://example.com/image8.jpg",
+      "name": "Yoga and Meditation",
+      "instructor": "Sophia Turner",
+      "totalStudents": 15,
+      "availableSeats": 5,
+      "price": 40
+    },
+    {
+      "image": "https://example.com/image9.jpg",
+      "name": "Badminton Training",
+      "instructor": "Daniel Clark",
+      "totalStudents": 10,
+      "availableSeats": 3,
+      "price": 50
+    },
+    {
+      "image": "https://example.com/image10.jpg",
+      "name": "Cycling Group",
+      "instructor": "Olivia Baker",
+      "totalStudents": 12,
+      "availableSeats": 4,
+      "price": 30
+    }
+  ]
+  
