@@ -3,12 +3,29 @@ import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import useAuth from './../../hooks/useAuth';
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
+  const {login} = useAuth();
   const onSubmit = (data) => {
-    console.log(data);
+    login(data.email, data.password)
+    .then(result => {
+      const user = result.user;
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `${user.displayName} successfully logged in.`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      reset();
+    })
+    .catch(err => {
+      console.error(err.message);
+    })
   };
 
   const containerVariants = {

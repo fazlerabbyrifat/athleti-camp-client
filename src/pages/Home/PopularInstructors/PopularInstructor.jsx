@@ -33,8 +33,10 @@ const PopularInstructor = () => {
             <ImageCard imageURL={popularInstructor.image} />
             <div className="mt-5 p-4">
               <h3 className="text-xl font-bold">{popularInstructor.name}</h3>
-              <p className="text-lg font-semibold">
-                Instructor: {popularInstructor.email}
+              <p>Total Classes taken: {popularInstructor.total_classes}</p>
+              <p>Total Students: {popularInstructor.total_students}</p>
+              <p className="">
+                Contact: {popularInstructor.email}
               </p>
             </div>
           </div>
