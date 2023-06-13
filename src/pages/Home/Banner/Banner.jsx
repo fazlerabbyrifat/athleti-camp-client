@@ -96,7 +96,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="swiper-container">
+    <div className="swiper-container overflow-x-hidden">
       <div className="swiper-wrapper">
         {slides.map((slide, index) => (
           <div

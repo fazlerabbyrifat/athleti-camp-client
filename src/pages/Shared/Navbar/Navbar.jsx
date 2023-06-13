@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
     <>
       <li>
@@ -47,8 +56,8 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <img className="w-20" src={logo} alt="" />
-        <Link className="btn btn-ghost normal-case text-2xl lg:text-5xl font-semibold text-white">
+        <img className="w-12 lg:w-20" src={logo} alt="" />
+        <Link className="btn btn-ghost normal-case text-xl lg:text-5xl font-semibold text-white">
           Athleti Camp
         </Link>
       </div>
@@ -56,11 +65,24 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-white">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-info btn-outline btn-sm md:btn-md">
-            Login
-          </button>
-        </Link>
+        {user ? (
+          <>
+            <div className="avatar online mr-2 md:mr-5">
+              <div className="w-12 rounded-full">
+                <img src={user?.photoURL} alt="User Avatar" />
+              </div>
+            </div>
+            <button onClick={handleLogout} className="btn btn-info btn-outline btn-sm md:btn-md">
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-info btn-outline btn-sm md:btn-md">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
