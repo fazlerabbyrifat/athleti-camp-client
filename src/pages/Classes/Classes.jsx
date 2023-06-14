@@ -10,7 +10,6 @@ const Classes = () => {
       .get("http://localhost:5000/classes")
       .then((res) => {
         setAllClasses(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.error(error);

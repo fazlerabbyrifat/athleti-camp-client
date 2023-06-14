@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAdmin from "./../../hooks/useAdmin";
 import useInstructor from "./../../hooks/useInstructor";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ClassCard = ({ allClass }) => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const [axiosSecure] = useAxiosSecure();
   const isAvailable = allClass?.availableSeats > 0;
 
   const selectButtonDisabled = !isAvailable || isAdmin || isInstructor;
@@ -21,6 +23,22 @@ const ClassCard = ({ allClass }) => {
         showConfirmButton: false,
         timer: 1500,
       });
+    }
+    else{
+        const { image, name, instructor, totalStudents, availableSeats, price } = allClass
+        const newClass = {name, image, instructor, totalStudents, availableSeats, price}
+        axiosSecure.post('/selectedClasses', newClass)
+        .then(data => {
+            if(data.data.insertedId) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${name} added successfully`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
     }
   };
 

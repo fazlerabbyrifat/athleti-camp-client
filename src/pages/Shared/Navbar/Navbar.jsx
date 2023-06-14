@@ -15,13 +15,13 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link>Home</Link>
-      </li>
-      <li>
-        <Link>Instructors</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/classes">Classes</Link>
+      </li>
+      <li>
+        <Link to="/instructors">Instructors</Link>
       </li>
       <li>
         <Link>Dashboard</Link>
