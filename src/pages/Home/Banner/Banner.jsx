@@ -11,7 +11,8 @@ import slideImage7 from "../../../assets/slider/slider7.jpg";
 import slideImage8 from "../../../assets/slider/slider8.jpg";
 import slideImage9 from "../../../assets/slider/slider9.jpg";
 import slideImage10 from "../../../assets/slider/slider10.jpg";
-import './Banner.css'
+import "./Banner.css";
+import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
   const slides = [
@@ -105,8 +106,27 @@ const Banner = () => {
             style={{ backgroundImage: `url(${slide.image})` }}
           >
             <div className="slider-content">
-              <h3 className="text-3xl font-bold mb-4 text-red-500">{slide.title}</h3>
-              <p className="text-xl font-medium text-green-500">{slide.description}</p>
+              <h3 className="text-3xl font-bold mb-4 text-red-500">
+                <Typewriter
+                  words={[slide.title]}
+                  loop={true}
+                  cursor
+                  cursorStyle="..."
+                  typeSpeed={70}
+                  delaySpeed={1000}
+                />
+              </h3>
+              <p className="text-xl font-medium text-green-500">
+                <Typewriter
+                  words={[slide.description]}
+                  loop={false}
+                  cursor
+                  cursorStyle="..."
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                />
+              </p>
             </div>
           </div>
         ))}
