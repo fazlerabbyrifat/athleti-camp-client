@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer-item a.active {
+    color: white;
+}
+
+.drawer-item a {
+    background-color: transparent;
+}
+
+.drawer-side a.active {
+    color: white;
+  }
+
+.drawer-side a {
+    background-color: transparent;
+}
