@@ -41,7 +41,7 @@ const SocialLogin = () => {
       <div className="text-center">
         <button
           onClick={handleGoogleLogin}
-          className="btn btn-square btn-outline"
+          className="btn btn-square btn-accent btn-outline"
         >
           <FcGoogle></FcGoogle>
         </button>

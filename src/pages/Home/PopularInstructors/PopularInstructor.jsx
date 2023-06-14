@@ -10,7 +10,6 @@ const PopularInstructor = () => {
       .get("http://localhost:5000/popular-instructors")
       .then((res) => {
         setPopularInstructors(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.error(err);

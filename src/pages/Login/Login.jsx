@@ -3,29 +3,30 @@ import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import useAuth from './../../hooks/useAuth';
+import useAuth from "./../../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
-  const {login} = useAuth();
+  const { login } = useAuth();
   const onSubmit = (data) => {
     login(data.email, data.password)
-    .then(result => {
-      const user = result.user;
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: `${user.displayName} successfully logged in.`,
-        showConfirmButton: false,
-        timer: 1500
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.displayName} successfully logged in.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
       })
-      reset();
-    })
-    .catch(err => {
-      console.error(err.message);
-    })
+      .catch((err) => {
+        console.error(err.message);
+      });
   };
 
   const containerVariants = {
@@ -88,11 +89,12 @@ const Login = () => {
           />
         </form>
         <p className="mt-4 text-center">
-          Don't have an account?
-          <Link to="/register" className="text-blue-500">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-blue-500 hover:text-blue-800">
             Please Register
           </Link>
         </p>
+        <SocialLogin></SocialLogin>
       </motion.div>
     </div>
   );

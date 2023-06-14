@@ -2,26 +2,48 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
   const { createUser, updateUserProfile } = useAuth();
 
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        updateUserProfile(data.name, data.photoUrl)
-        .then(() => {
-
-        })
+        updateUserProfile(data.name, data.photoUrl).then(() => {
+          const savedUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Your account created successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
+        });
       })
       .catch((err) => {
         console.error(err.message);
@@ -34,8 +56,10 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-5xl font-bold uppercase text-center mb-5">Register your account</h2>
+    <div className="mb-5">
+      <h2 className="text-5xl font-bold uppercase text-center mb-5">
+        Register your account
+      </h2>
       <div className="flex justify-center">
         <div className="w-1/3">
           <form
@@ -188,13 +212,14 @@ const Register = () => {
                 value="Register"
               />
             </div>
-            <Link
-              to="/login"
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            >
-              Already registered? Please Login
-            </Link>
           </form>
+          <p className="mt-4 text-center">
+            Already registered?{" "}
+            <Link to="/login" className="text-blue-500 hover:text-blue-800">
+              Please Login
+            </Link>
+          </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
