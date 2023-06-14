@@ -1,27 +1,35 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAdmin from "./../../hooks/useAdmin";
+import useInstructor from "./../../hooks/useInstructor";
 
-const ClassCard = ({allClass}) => {
-    const { user } = useAuth()
-    const isAvailable = allClass?.availableSeats > 0;
+const ClassCard = ({ allClass }) => {
+  const { user } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  const isAvailable = allClass?.availableSeats > 0;
 
-    const handleSelect = () => {
-        if (!user){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'warning',
-                title: 'You need to login first',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
+  const selectButtonDisabled = !isAvailable || isAdmin || isInstructor;
+
+  const handleSelect = () => {
+    if (!user) {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "You need to login first",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
+  };
 
   return (
-    <div className={`class-card p-4 rounded shadow grid-item ${
+    <div
+      className={`class-card p-4 rounded shadow grid-item ${
         !isAvailable ? "bg-red-500" : "bg-white"
-      }`}>
+      }`}
+    >
       <img
         src={allClass.image}
         alt={allClass.name}
@@ -35,7 +43,13 @@ const ClassCard = ({allClass}) => {
         <p>Total Students: {allClass.totalStudents}</p>
         <p>Available Seats: {allClass.availableSeats}</p>
         <p>Price: ${allClass.price}</p>
-        <button onClick={handleSelect} className="btn btn-info mt-2">Select</button>
+        <button
+          onClick={handleSelect}
+          disabled={selectButtonDisabled}
+          className="btn btn-info mt-2"
+        >
+          Select
+        </button>
       </div>
     </div>
   );
