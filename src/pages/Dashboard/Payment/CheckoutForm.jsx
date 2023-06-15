@@ -8,9 +8,6 @@ const CheckoutForm = ({ classData, setPaymentComplete }) => {
   const elements = useElements();
   const [axiosSecure] = useAxiosSecure();
   const [cardError, setCardError] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
-  const [processing, setProcessing] = useState(false);
-  const [transactionId, setTransactionId] = useState("");
 
   const handleSubmitPayment = async (event) => {
     event.preventDefault();
@@ -73,9 +70,6 @@ const CheckoutForm = ({ classData, setPaymentComplete }) => {
         </button>
       </form>
       {cardError && <p className="text-error text-sm">{cardError}</p>}
-      {transactionId && (
-        <p>Transaction Completed with transactionId: {transactionId}</p>
-      )}
     </>
   );
 };
