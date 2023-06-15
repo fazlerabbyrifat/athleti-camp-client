@@ -1,7 +1,80 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+  // const isAdmin = true
+  const [isAdmin] = useAdmin();
+  const isInstructor = false;
+  let dashboardLinks;
+  if (isAdmin) {
+    dashboardLinks = (
+      <>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/classes">Classes</NavLink>
+        </li>
+        <li>
+          <NavLink to="/instructors">Instructors</NavLink>
+        </li>
+        <div className="divider divider-horizontal"></div>
+        <div className="divider"></div>
+        <li>
+          <NavLink to="/dashboard/allClasses">All Classes</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/users">All Users</NavLink>
+        </li>
+      </>
+    );
+  } else if (isInstructor) {
+    dashboardLinks = (
+      <>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/classes">Classes</NavLink>
+        </li>
+        <li>
+          <NavLink to="/instructors">Instructors</NavLink>
+        </li>
+        <div className="divider divider-horizontal"></div>
+        <div className="divider"></div>
+      </>
+    );
+  } else {
+    dashboardLinks = (
+      <>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/classes">Classes</NavLink>
+        </li>
+        <li>
+          <NavLink to="/instructors">Instructors</NavLink>
+        </li>
+        <div className="divider divider-horizontal"></div>
+        <div className="divider"></div>
+        <li>
+          <NavLink to="/dashboard/selectedClasses">Selected Class</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/enrolledClasses">Enrolled Class</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/payment/:id">Payment</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/payment">My Payments</NavLink>
+        </li>
+      </>
+    );
+  }
+
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -24,62 +97,18 @@ const Dashboard = () => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 text-3xl text-white font-semibold px-2 mx-2">Athleti Camp Dashboard</div>
+          <div className="flex-1 text-3xl text-white font-semibold px-2 mx-2">
+            Athleti Camp Dashboard
+          </div>
           <div className="drawer-item flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/classes">Classes</NavLink>
-              </li>
-              <li>
-                <NavLink to="/instructors">Instructors</NavLink>
-              </li>
-              <div className="divider divider-horizontal"></div>
-              <li>
-                <NavLink to="/dashboard/selectedClasses">Selected Class</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/enrolledClasses">Enrolled Class</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/payment/:id">Payment</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/payment">My Payments</NavLink>
-              </li>
-            </ul>
+            <ul className="menu menu-horizontal">{dashboardLinks}</ul>
           </div>
         </div>
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-teal-500">
-        <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/classes">Classes</NavLink>
-              </li>
-              <li>
-                <NavLink to="/instructors">Instructors</NavLink>
-              </li>
-              <div className="divider"></div>
-              <li>
-                <NavLink to="/dashboard/selectedClasses">Selected Class</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/enrolledClasses">Enrolled Class</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/payment">Payment</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/myPayments">My Payments</NavLink>
-              </li>
-        </ul>
+        <ul className="menu p-4 w-80 h-full bg-teal-500">{dashboardLinks}</ul>
       </div>
     </div>
   );

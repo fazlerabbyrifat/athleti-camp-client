@@ -11,6 +11,7 @@ import PrivateRoutes from './PrivateRoutes';
 import Payment from "../pages/Dashboard/Payment/Payment";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
 import PaymentCollections from "../pages/Dashboard/PaymentCollections/PaymentCollections";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <PaymentCollections></PaymentCollections>
+            },
+            {
+                path: 'users',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

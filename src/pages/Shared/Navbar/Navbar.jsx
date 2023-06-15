@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const [isAdmin] = useAdmin();
 
   const handleLogout = () => {
     logout()
@@ -24,7 +26,7 @@ const Navbar = () => {
         <Link to="/instructors">Instructors</Link>
       </li>
       <li>
-        <Link to="/dashboard/selectedClasses">Dashboard</Link>
+        <Link to={isAdmin ? "/dashboard/users" : "/dashboard/selectedClasses"}>Dashboard</Link>
       </li>
     </>
   );

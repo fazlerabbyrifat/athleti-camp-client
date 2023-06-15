@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAdmin from "./../../hooks/useAdmin";
-import useInstructor from "./../../hooks/useInstructor";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAdmin from "../../hooks/useAdmin";
 
 const ClassCard = ({ allClass }) => {
   const { user } = useAuth();
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
   const [axiosSecure] = useAxiosSecure();
   const isAvailable = allClass?.availableSeats > 0;
+  const isAdmin = useAdmin();
 
-  const selectButtonDisabled = !isAvailable || isAdmin || isInstructor;
+  const selectButtonDisabled = !isAvailable || isAdmin ;
 
   const handleSelect = () => {
     if (!user) {
