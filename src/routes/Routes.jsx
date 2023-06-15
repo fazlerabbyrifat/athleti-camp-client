@@ -12,11 +12,13 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
 import PaymentCollections from "../pages/Dashboard/PaymentCollections/PaymentCollections";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
