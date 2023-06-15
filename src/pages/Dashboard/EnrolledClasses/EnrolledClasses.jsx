@@ -24,7 +24,6 @@ const EnrolledClasses = () => {
       if (error) {
         return <div>Error: {error.message}</div>;
       }
-      console.log(enrolledClasses)
 
   return (
     <div className="overflow-x-auto">

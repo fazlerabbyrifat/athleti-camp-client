@@ -33,8 +33,8 @@ const Footer = () => {
               </Link>
             </li>
             <li className="mb-2">
-              <Link to="/contact" className="hover:text-gray-500">
-                Contact
+              <Link to="/instructors" className="hover:text-gray-500">
+                Instructors
               </Link>
             </li>
           </ul>
