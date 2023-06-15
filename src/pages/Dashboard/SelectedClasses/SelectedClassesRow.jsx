@@ -3,6 +3,11 @@ import { FaTrashAlt, FaWallet } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const SelectedClassesRow = ({selectedClass, index, handleClassDelete}) => {
+    const classData = {
+        price: selectedClass.price,
+        id: selectedClass._id
+    }
+
   return (
     <tr>
       <td>{index + 1}</td>
@@ -31,7 +36,7 @@ const SelectedClassesRow = ({selectedClass, index, handleClassDelete}) => {
         </button>
       </td>
       <td>
-        <Link>
+        <Link to={`/dashboard/payment/${selectedClass._id}`} state={classData}>
           <button className="btn btn-primary btn-sm">
             <FaWallet></FaWallet>
           </button>

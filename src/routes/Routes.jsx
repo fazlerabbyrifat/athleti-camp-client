@@ -8,6 +8,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import Dashboard from "../layout/Dashboard";
 import SelectedClasses from "../pages/Dashboard/SelectedClasses/SelectedClasses";
 import PrivateRoutes from './PrivateRoutes';
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: 'selectedClasses',
                 element: <SelectedClasses></SelectedClasses>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
             }
         ]
     }

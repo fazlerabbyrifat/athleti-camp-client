@@ -25,8 +25,8 @@ const ClassCard = ({ allClass }) => {
       });
     }
     else{
-        const { image, name, instructor, totalStudents, availableSeats, price } = allClass
-        const newClass = {name, image, instructor, totalStudents, availableSeats, price}
+        const { _id, image, name, instructor, totalStudents, availableSeats, price } = allClass
+        const newClass = {_id, name, image, instructor, totalStudents, availableSeats, price}
         axiosSecure.post('/selectedClasses', newClass)
         .then(data => {
             if(data.data.insertedId) {

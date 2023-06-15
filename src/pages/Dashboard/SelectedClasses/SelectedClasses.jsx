@@ -29,6 +29,7 @@ const SelectedClasses = () => {
   }
 
   const handleClassDelete = (selectedClass) => {
+    console.log(selectedClass._id)
     Swal.fire({
       title: "Confirm Delete",
       text: "Are you sure you want to delete this class?",
