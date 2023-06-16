@@ -27,14 +27,14 @@ const AllUsers = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const handleCreateAdmin = (user) => {
-    axiosSecure.patch(`users/admin/${user._id}`).then((res) => {
+  const handleUpdateRole = (user, role) => {
+    axiosSecure.patch(`users/admin/${user._id}`, {role}).then((res) => {
       if (res.data.modifiedCount > 0) {
         refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${user.name} is an admin`,
+          title: `${user.name} is an ${role}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -77,6 +77,7 @@ const AllUsers = () => {
               <td>{user?.email}</td>
               <td>
                 <button
+                onClick={() => handleUpdateRole(user, 'instructor')}
                   className="btn btn-secondary btn-sm"
                 >
                   Make Instructor
@@ -84,7 +85,7 @@ const AllUsers = () => {
               </td>
               <td>
                 <button
-                  onClick={() => handleCreateAdmin(user)}
+                  onClick={() => handleUpdateRole(user, 'admin')}
                   className="btn btn-accent btn-sm"
                 >
                   Make Admin

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAdmin from "../../hooks/useAdmin";
+import useAdmin from "../../hooks/useUserRole";
 
 const ClassCard = ({ allClass }) => {
   const { user } = useAuth();
