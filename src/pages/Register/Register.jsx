@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
@@ -13,6 +13,8 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   const { createUser, updateUserProfile } = useAuth();
 
@@ -42,6 +44,7 @@ const Register = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                navigate('/');
               }
             });
         });

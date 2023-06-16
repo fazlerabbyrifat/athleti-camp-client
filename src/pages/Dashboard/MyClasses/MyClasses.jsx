@@ -14,8 +14,7 @@ const MyClasses = () => {
   const {
     data: myClasses = [],
     isLoading,
-    error,
-    refetch,
+    error
   } = useQuery(["myClasses"], fetchClasses);
 
   if (isLoading) {
@@ -25,9 +24,9 @@ const MyClasses = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-  console.log(myClasses);
+  
   return (
-    <div>
+    <div className="overflow-x-auto">
       <h1 className="text-3xl lg:text-5xl font-bold uppercase text-center p-10">
         My Classes
       </h1>

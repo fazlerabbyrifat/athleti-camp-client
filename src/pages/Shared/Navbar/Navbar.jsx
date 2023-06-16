@@ -31,7 +31,7 @@ const Navbar = () => {
         </li>
       ) : isInstructor ? (
         <li>
-          <Link to="/dashboard/addClass">Dashboard</Link>
+          <Link to="/dashboard/myClasses">Dashboard</Link>
         </li>
       ) : (
         <li>

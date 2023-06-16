@@ -22,7 +22,7 @@ const Dashboard = () => {
         <div className="divider divider-horizontal"></div>
         <div className="divider"></div>
         <li>
-          <NavLink to="/dashboard/allClasses">All Classes</NavLink>
+          <NavLink to="/dashboard/manageClasses">All Classes</NavLink>
         </li>
         <li>
           <NavLink to="/dashboard/users">All Users</NavLink>
