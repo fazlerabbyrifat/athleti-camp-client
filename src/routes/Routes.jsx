@@ -13,6 +13,8 @@ import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses"
 import PaymentCollections from "../pages/Dashboard/PaymentCollections/PaymentCollections";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <PaymentCollections></PaymentCollections>
+            },
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
+            },
+            {
+                path: 'myClasses',
+                element: <MyClasses></MyClasses>
             },
             {
                 path: 'users',

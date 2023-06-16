@@ -1,11 +1,11 @@
 import React from "react";
-import {  NavLink, Outlet } from "react-router-dom";
-import useUserRole from './../hooks/useUserRole';
+import { NavLink, Outlet } from "react-router-dom";
+import useUserRole from "./../hooks/useUserRole";
 
 const Dashboard = () => {
   // const isAdmin = true
   const [isAdmin, isInstructor] = useUserRole();
-  console.log(isInstructor)
+  console.log(isInstructor);
   let dashboardLinks;
   if (isAdmin) {
     dashboardLinks = (
@@ -44,7 +44,10 @@ const Dashboard = () => {
         <div className="divider divider-horizontal"></div>
         <div className="divider"></div>
         <li>
-          <NavLink>Instructor</NavLink>
+          <NavLink to="/dashboard/addClass">Add Class</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dashboard/myClasses">My Classes</NavLink>
         </li>
       </>
     );
