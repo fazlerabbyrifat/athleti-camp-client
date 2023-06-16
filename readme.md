@@ -29,6 +29,6 @@ Welcome to the client-side repository of the Athleti Camp website! This project 
 
 ## Live Site
 
-The live version of the Athleti Camp website can be accessed at []().
+The live version of the Athleti Camp website can be accessed at [https://athleti-camp.web.app/](https://athleti-camp.web.app/).
 
 Feel free to explore the website and enroll in your favorite sports programs. If you have any questions or feedback, please don't hesitate to contact our support team. We hope you have a fantastic experience at Athleti Camp!

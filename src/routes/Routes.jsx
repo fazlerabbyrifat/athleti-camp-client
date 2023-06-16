@@ -17,7 +17,6 @@ import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import AdminRoute from "./AdminRoute";
-import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
     {
@@ -71,11 +70,11 @@ const router = createBrowserRouter([
             // instructor related routes
             {
                 path: 'addClass',
-                element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+                element: <AddClass></AddClass>
             },
             {
                 path: 'myClasses',
-                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
+                element: <MyClasses></MyClasses>
             },
             // admin related routes
             {
