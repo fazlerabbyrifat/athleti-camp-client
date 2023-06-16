@@ -1,9 +1,9 @@
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import CheckoutForm from "./CheckoutForm";
 import Swal from "sweetalert2";
+import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
 
