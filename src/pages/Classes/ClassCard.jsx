@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAdmin from "../../hooks/useUserRole";
+import useUserRole from "../../hooks/useUserRole";
 
 const ClassCard = ({ allClass }) => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const isAvailable = allClass?.availableSeats > 0;
-  const isAdmin = useAdmin();
+  const [isAdmin , isInstructor] = useUserRole();
 
-  const selectButtonDisabled = !isAvailable || isAdmin ;
+  const selectButtonDisabled = !isAvailable || isAdmin || isInstructor;
 
   const handleSelect = () => {
     if (!user) {
@@ -24,7 +24,7 @@ const ClassCard = ({ allClass }) => {
     }
     else{
         const { _id, image, name, instructor, totalStudents, availableSeats, price } = allClass
-        const newClass = {_id, name, image, instructor, totalStudents, availableSeats, price}
+        const newClass = { classId:_id, name, image, instructor, totalStudents, availableSeats, price}
         axiosSecure.post('/selectedClasses', newClass)
         .then(data => {
             if(data.data.insertedId) {

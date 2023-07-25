@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://athleti-camp-server.vercel.app',
+    baseURL: 'https://localhost:5000',
 })
 
 const useAxiosSecure = () => {
