@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { BounceLoader } from "react-spinners";
 import SelectedClassesRow from "./SelectedClassesRow";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const SelectedClasses = () => {
-  const [axiosSecure] = useAxiosSecure();
+  const [selectedClasses, setSelectedClasses] = useState([]);
 
-  const fetchSelectedClasses = async () => {
-    const res = await axiosSecure.get("/selectedClasses");
-    return res.data;
-  };
+  useEffect(() => {
+    fetch("https://athleti-camp-server.vercel.app/selectedClasses").then(res => res.json()).then(data =>setSelectedClasses(data))
+  }, [])
 
-  const {
-    data: selectedClasses = [],
-    isLoading,
-    error,
-    refetch,
-  } = useQuery(["selectedClasses"], fetchSelectedClasses);
+  // const fetchSelectedClasses = async () => {
+  //   const res = await axiosSecure.get("/selectedClasses");
+  //   return res.data;
+  // };
 
-  if (isLoading) {
-    return <BounceLoader color="#36d7b7" />;
-  }
+  // const {
+  //   data: selectedClasses = [],
+  //   isLoading,
+  //   error,
+  //   refetch,
+  // } = useQuery(["selectedClasses"], fetchSelectedClasses);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (isLoading) {
+  //   return <BounceLoader color="#36d7b7" />;
+  // }
+
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
 
   const handleClassDelete = (selectedClass) => {
     console.log(selectedClass._id)
@@ -39,11 +44,11 @@ const SelectedClasses = () => {
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .delete(`/selectedClasses/${selectedClass._id}`)
+        axios
+          .delete(`https://athleti-camp-server.vercel.app/selectedClasses/${selectedClass._id}`)
           .then((res) => {
+            console.log(res.data)
             if (res.data.deletedCount > 0) {
-              refetch();
               Swal.fire(
                 "Deleted!",
                 "The class has been successfully deleted.",

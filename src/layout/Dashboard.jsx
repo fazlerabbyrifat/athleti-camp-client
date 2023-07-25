@@ -5,7 +5,7 @@ import useUserRole from "./../hooks/useUserRole";
 const Dashboard = () => {
   // const isAdmin = true
   const [isAdmin, isInstructor] = useUserRole();
-  console.log(isInstructor);
+  console.log(isAdmin);
   let dashboardLinks;
   if (isAdmin) {
     dashboardLinks = (
