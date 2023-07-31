@@ -1,29 +1,8 @@
 import React from "react";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { async } from "@firebase/util";
-import { useQuery } from "@tanstack/react-query";
-import { BounceLoader } from 'react-spinners';
+import useEnrolled from "../../../hooks/useEnrolled";
 
 const EnrolledClasses = () => {
-    const [axiosSecure] = useAxiosSecure();
-
-    const fetchEnrolledClasses = async() => {
-        const res = await axiosSecure.get('/enrolledClasses');
-        return res.data;
-    };
-
-    const {data: enrolledClasses = [],
-        isLoading,
-        error,
-    } = useQuery(['enrolledClasses'], fetchEnrolledClasses)
-
-    if (isLoading) {
-        return <BounceLoader color="#36d7b7" />;
-      }
-    
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      }
+  const {enrolledClasses} = useEnrolled();
 
   return (
     <div className="overflow-x-auto">

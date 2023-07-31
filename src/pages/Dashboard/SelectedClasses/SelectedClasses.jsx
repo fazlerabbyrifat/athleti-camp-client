@@ -1,64 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
-import { BounceLoader } from "react-spinners";
 import SelectedClassesRow from "./SelectedClassesRow";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useSelected from "../../../hooks/useSelected";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
-  const [selectedClasses, setSelectedClasses] = useState([]);
+  const { selectedClasses, refetch } = useSelected()
+    const [axiosSecure] = useAxiosSecure()
 
-  useEffect(() => {
-    fetch("https://athleti-camp-server.vercel.app/selectedClasses").then(res => res.json()).then(data =>setSelectedClasses(data))
-  }, [])
-
-  // const fetchSelectedClasses = async () => {
-  //   const res = await axiosSecure.get("/selectedClasses");
-  //   return res.data;
-  // };
-
-  // const {
-  //   data: selectedClasses = [],
-  //   isLoading,
-  //   error,
-  //   refetch,
-  // } = useQuery(["selectedClasses"], fetchSelectedClasses);
-
-  // if (isLoading) {
-  //   return <BounceLoader color="#36d7b7" />;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
-
-  const handleClassDelete = (selectedClass) => {
-    console.log(selectedClass._id)
+  const handleClassDelete = (id) => {
     Swal.fire({
-      title: "Confirm Delete",
-      text: "Are you sure you want to delete this class?",
-      icon: "warning",
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Delete",
-      cancelButtonText: "Cancel",
-    }).then((result) => {
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`https://athleti-camp-server.vercel.app/selectedClasses/${selectedClass._id}`)
-          .then((res) => {
-            console.log(res.data)
-            if (res.data.deletedCount > 0) {
-              Swal.fire(
-                "Deleted!",
-                "The class has been successfully deleted.",
-                "success"
-              );
-            }
-          });
+
+          axiosSecure.delete(`/selectedClasses/${id}`)
+              .then(data => {
+                  if (data.data.deletedCount > 0) {
+                      Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                      )
+                      refetch()
+                  }
+              })
       }
-    });
+  })
   };
+
+  if (selectedClasses.length === 0) {
+    return <>
+        <div className='flex items-center justify-center h-[90vh]'>
+            <div>
+                <h2 className="text-xl text-center text-green-400">Please Select a class!</h2>
+                <Link to='/classes'>
+                    <button className="btn">
+                        Go To Classes
+                    </button>
+                </Link>
+            </div>
+        </div>
+    </>
+}
 
   return (
     <div className="overflow-x-auto">

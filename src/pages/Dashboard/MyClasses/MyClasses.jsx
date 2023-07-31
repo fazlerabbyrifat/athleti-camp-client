@@ -2,12 +2,14 @@ import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { BounceLoader } from "react-spinners";
+import useAuth from "../../../hooks/useAuth";
 
 const MyClasses = () => {
   const [axiosSecure] = useAxiosSecure();
+  const {user} = useAuth();
 
   const fetchClasses = async () => {
-    const res = await axiosSecure.get("/myClasses");
+    const res = await axiosSecure.get(`/myClasses?email=${user.email}`);
     return res.data;
   };
 

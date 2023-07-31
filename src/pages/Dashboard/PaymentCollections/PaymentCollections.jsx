@@ -1,29 +1,9 @@
 import React from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { BounceLoader } from 'react-spinners';
-import { useQuery } from '@tanstack/react-query';
+import usePaymentHistory from '../../../hooks/usePaymentHistory';
 
 const PaymentCollections = () => {
-    const [axiosSecure] = useAxiosSecure();
+   const {payments} = usePaymentHistory(); 
 
-    const fetchEnrolledClasses = async() => {
-        const res = await axiosSecure.get('/payment');
-        return res.data;
-    };
-
-    const {data: payments = [],
-        isLoading,
-        error,
-    } = useQuery(['payment'], fetchEnrolledClasses)
-
-    if (isLoading) {
-        return <BounceLoader color="#36d7b7" />;
-      }
-    
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      }
-console.log(payments);
     return (
         <div className="overflow-x-auto">
       <h1 className="text-3xl lg:text-5xl font-bold uppercase text-center p-10">

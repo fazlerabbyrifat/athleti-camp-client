@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import useAuth from "../../../hooks/useAuth";
-import useUserRole from './../../../hooks/useUserRole';
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
-  const [isAdmin, isInstructor] = useUserRole()
+  const {isAdmin} = useAdmin();
+  const {isInstructor} = useInstructor();
 
   const handleLogout = () => {
     logout()

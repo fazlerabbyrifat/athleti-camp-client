@@ -7,7 +7,7 @@ const PopularClasses = () => {
 
   useEffect(() => {
     axios
-      .get("https://athleti-camp-server.vercel.app/popular-classes")
+      .get("http://athleti-camp-server-fazlerabbyrifat.vercel.app/popular-classes")
       .then((res) => {
         setPopularClasses(res.data);
       })

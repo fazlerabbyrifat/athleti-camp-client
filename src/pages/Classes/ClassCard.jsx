@@ -1,64 +1,89 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useUserRole from "../../hooks/useUserRole";
-import axios from "axios";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ClassCard = ({ allClass }) => {
   const { user } = useAuth();
-  const [axiosSecure] = useAxiosSecure();
-  const isAvailable = allClass?.availableSeats > 0;
-  const [isAdmin , isInstructor] = useUserRole();
+  const {isAdmin} = useAdmin();
+  const { isInstructor} = useInstructor();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isDisable, setIsDisable] = useState(false);
 
-  const selectButtonDisabled = !isAvailable || isAdmin || isInstructor;
+  const {_id, image, name, instructor, totalStudents, availableSeats, price} = allClass
 
-  const handleSelect = () => {
-    if (!user) {
-      Swal.fire({
-        position: "top-end",
-        icon: "warning",
-        title: "You need to login first",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+  useEffect(() =>{
+    if(isAdmin || isInstructor){
+      setIsDisable(true);
     }
-    else{
-        const { _id, image, name, instructor, totalStudents, availableSeats, price } = allClass
-        const newClass = { _id, name, image, instructor, totalStudents, availableSeats, price}
-        axios.post('https://athleti-camp-server.vercel.app/selectedClasses', newClass)
-  .then(res => {
-    console.log(res.data)
-    // Assuming the server responds with an object containing a "success" property
-    if (res.data.insertedId) {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: `${name} added successfully`,
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
-  })
-  .catch(error => {
-    // Handle any errors that occurred during the request
-    console.error('Error:', error.message);
-    // Optionally, show an error message to the user
+  }, [isAdmin,isInstructor])
+
+  const handleSelect = (item) => {
+  if (!user) {
     Swal.fire({
-      position: 'top-end',
-      icon: 'error',
-      title: 'Failed to add the class',
-      showConfirmButton: false,
-      timer: 1500
-    });
-  });
+        title: 'Please Login',
+        text: "You have to login first!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'login'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            navigate('/login', { state: { from: location } })
+        }
+    })
+} else {
+    const selectedItem = {
+        name: user?.displayName || 'anonymous',
+        email: user?.email || 'anonymous email',
+        classId: _id,
+        image,
+        name,
+        instructor,
+        price,
+        totalStudents,
+        availableSeats
     }
+    fetch('http://athleti-camp-server-fazlerabbyrifat.vercel.app/selectedClasses', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(selectedItem)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if (data.message === "exists") {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: `Already added ${item.name}`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+            }
+            if (data.insertedId) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${item.name} is added. Please checkout!`,
+              showConfirmButton: false,
+              timer: 1500
+            })
+            }
+        })
+}
   };
 
   return (
     <div
       className={`class-card p-4 rounded shadow grid-item ${
-        !isAvailable ? "bg-red-500" : "bg-white"
+        allClass.availableSeats === 0 ? "bg-red-500" : "bg-white"
       }`}
     >
       <img
@@ -75,8 +100,8 @@ const ClassCard = ({ allClass }) => {
         <p>Available Seats: {allClass.availableSeats}</p>
         <p>Price: ${allClass.price}</p>
         <button
-          onClick={handleSelect}
-          disabled={selectButtonDisabled}
+          onClick={() => handleSelect(allClass)}
+          disabled={allClass?.availableSeats === 0 || isDisable}
           className="btn btn-info mt-2"
         >
           Select

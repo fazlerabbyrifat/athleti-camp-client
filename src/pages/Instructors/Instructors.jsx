@@ -7,7 +7,7 @@ const Instructors = () => {
 
   useEffect(() => {
     axios
-      .get("https://athleti-camp-server.vercel.app/instructors")
+      .get("http://athleti-camp-server-fazlerabbyrifat.vercel.app/instructors")
       .then((res) => {
         setInstructors(res.data);
         console.log(res.data);

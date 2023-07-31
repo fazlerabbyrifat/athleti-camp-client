@@ -31,7 +31,7 @@ const SelectedClassesRow = ({selectedClass, index, handleClassDelete}) => {
       <td>{selectedClass?.availableSeats}</td>
       <td>${selectedClass?.price}</td>
       <td>
-        <button onClick={() => handleClassDelete(selectedClass)} className="btn btn-error btn-sm">
+        <button onClick={() => handleClassDelete(selectedClass._id)} className="btn btn-error btn-sm">
           <FaTrashAlt></FaTrashAlt>
         </button>
       </td>

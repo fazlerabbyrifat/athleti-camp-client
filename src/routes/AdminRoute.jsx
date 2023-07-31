@@ -1,12 +1,12 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
-import useUserRole from '../hooks/useUserRole';
 import { BounceLoader } from 'react-spinners';
 import { Navigate, useLocation } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const AdminRoute = ({children}) => {
     const {user, loading} = useAuth();
-    const [ isAdmin, isAdminLoading] = useUserRole();
+    const { isAdmin, isAdminLoading} = useAdmin();
     const location = useLocation();
 
     if (loading || isAdminLoading){

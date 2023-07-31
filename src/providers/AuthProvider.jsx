@@ -45,15 +45,15 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             if(currentUser) {
                 
-                axios.post('https://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('http://athleti-camp-server-fazlerabbyrifat.vercel.app/jwt', { email: currentUser.email })
                 .then(data => {
                     console.log(data)
-                    localStorage.setItem('access_token', data.data.token);
+                    localStorage.setItem('access-token', data.data.token);
                     setLoading(false);
                 })
             }
             else{
-                localStorage.removeItem('access_token');
+                localStorage.removeItem('access-token');
             }
             setLoading(false);
         })

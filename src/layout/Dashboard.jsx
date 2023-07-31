@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import useUserRole from "./../hooks/useUserRole";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  // const isAdmin = true
-  const [isAdmin, isInstructor] = useUserRole();
+  const {isAdmin} = useAdmin();
+  const {isInstructor} = useInstructor();
   console.log(isAdmin);
   let dashboardLinks;
   if (isAdmin) {
@@ -75,7 +76,7 @@ const Dashboard = () => {
           <NavLink to="/dashboard/payment/:id">Payment</NavLink>
         </li>
         <li>
-          <NavLink to="/dashboard/payment">My Payments</NavLink>
+          <NavLink to="/dashboard/payment-history">My Payments</NavLink>
         </li>
       </>
     );
