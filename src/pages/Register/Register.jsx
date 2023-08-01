@@ -26,7 +26,7 @@ const Register = () => {
         updateUserProfile(data.name, data.photoUrl).then(() => {
           const savedUser = { name: data.name, email: data.email, image: data.photoUrl };
           console.log(savedUser)
-          fetch("http://athleti-camp-server-fazlerabbyrifat.vercel.app/users", {
+          fetch("https://athleti-camp-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -20,7 +20,7 @@ const SocialLogin = () => {
           email: loggedUser.email,
           image: loggedUser.photoURL,
         };
-        fetch("http://athleti-camp-server-fazlerabbyrifat.vercel.app/users", {
+        fetch("https://athleti-camp-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

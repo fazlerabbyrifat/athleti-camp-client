@@ -7,7 +7,7 @@ const Classes = () => {
 
   useEffect(() => {
     axios
-      .get("http://athleti-camp-server-fazlerabbyrifat.vercel.app/classes")
+      .get("https://athleti-camp-server.vercel.app/classes")
       .then((res) => {
         setAllClasses(res.data);
       })

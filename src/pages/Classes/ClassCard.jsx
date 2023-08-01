@@ -48,7 +48,7 @@ const ClassCard = ({ allClass }) => {
         totalStudents,
         availableSeats
     }
-    fetch('http://athleti-camp-server-fazlerabbyrifat.vercel.app/selectedClasses', {
+    fetch('https://athleti-camp-server.vercel.app/selectedClasses', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
